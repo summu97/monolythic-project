@@ -1,8 +1,8 @@
 using roles for playbook:
 cd /etc/ansible
 
-mkdir -p roles/tomcat/tasks
-vim roles/tomcat/tasks/main.yml
+cmnd: mkdir -p roles/tomcat/tasks
+cmnd: vim roles/tomcat/tasks/main.yml
 
   - name: download tomcat from dlcdn
       get_url:
@@ -35,8 +35,8 @@ vim roles/tomcat/tasks/main.yml
     - name: start the tomcat
       shell: nohup /root/tomcat/bin/startup.sh
 ----------------------------------------------------------------------------------------
-mkdir -p roles/deploy/tasks
-vim roles/deploy/tasks/main.yml
+cmnd: mkdir -p roles/deploy/tasks
+cmnd: vim roles/deploy/tasks/main.yml
 
 - name: copying artifact
   copy:
@@ -44,8 +44,8 @@ vim roles/deploy/tasks/main.yml
     dest=/root/tomcat/webapps
 ----------------------------------------------------------------------------------------
 
-mkdir -p roles/exporter/tasks
-vim roles/exporter/tasks/main.yml
+cmnd: mkdir -p roles/exporter/tasks
+cmnd: vim roles/exporter/tasks/main.yml
 
 - name: installing nodeexporter
   copy:
@@ -55,7 +55,7 @@ vim roles/exporter/tasks/main.yml
 -----------------------------------------------------------------------------------------
 
 
-vim master.yml
+cmnd: vim master.yml
 - hosts: all
   roles:
      - tomcat
