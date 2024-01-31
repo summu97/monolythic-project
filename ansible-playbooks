@@ -1,3 +1,6 @@
+using roles for playbook:
+cd /etc/ansible
+
 mkdir -p roles/tomcat/tasks
 vim roles/tomcat/tasks/main.yml
 
@@ -31,19 +34,30 @@ vim roles/tomcat/tasks/main.yml
 
     - name: start the tomcat
       shell: nohup /root/tomcat/bin/startup.sh
-
+----------------------------------------------------------------------------------------
 mkdir -p roles/deploy/tasks
+vim roles/deploy/tasks/main.yml
 
 - name: copying artifact
   copy:
     src=/var/lib/jenkins/workspace/pipeline-1/target/NETFLIX-1.2.2.war
     dest=/root/tomcat/webapps
-
+----------------------------------------------------------------------------------------
 
 mkdir -p roles/exporter/tasks
+vim roles/exporter/tasks/main.yml
 
 - name: installing nodeexporter
   copy:
     src=node.sh dest=/root
 - name: running node.sh
   command: sh node.sh
+-----------------------------------------------------------------------------------------
+
+
+vim master.yml
+- hosts: all
+  roles:
+     - tomcat
+     - deploy
+     - exporter
