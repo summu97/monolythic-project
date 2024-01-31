@@ -1,16 +1,23 @@
 plugiuns required:
 deploy to container, ansible, s3 publisher
+
 adding ansible as tool: dashboard--managejenkins--tools--ansible name--name:ansible--path:/usr/bin--save
+
 adding s3: dashboard--managejenkins--system--amazon s3 profile--add--name:s3--accesskey--secret accesskey--save
+
 stage-1:
 checkout
+
 stage-2:
 build,test
+
 stage-3:
 created war file
+
 stage-4:
 artifactory
 pipelinesyntax:s3 upload: publish artifacts to s3--source:target/your war file--exclude:target--destination bucket:your bucket name--region--give your bucket region--generate --copy paste syntax in pipeline
+
 stage-5:
 ansible:
 pipelinesyntax: ansiblePlaybook--playbook file path--/etc/ansible/playbook name--inventory file path--/etc/ansible/hosts--SSH connection credentials:add:useername/password--username:root--password:give your ansible setup poaswd--Disable the host SSH key check:select it
